@@ -2,13 +2,10 @@
 Smith College / CSC223 / A1 Starter Code
 
 ## Preconditions:
-1. Install the Java JDK; NOT the JRE: 
 
-[https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)
+1. Install the Java JDK; NOT the JRE: [https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)
 
-2. Install Eclipse, (using my link rather than searching for it, since there are many versions):
-
-[https://www.eclipse.org/downloads/packages/release/2019-06/r/eclipse-ide-java-developers](https://www.eclipse.org/downloads/packages/release/2019-06/r/eclipse-ide-java-developers)
+2. Install Eclipse, (using my link rather than searching for it, since there are many versions): [https://www.eclipse.org/downloads/packages/release/2019-06/r/eclipse-ide-java-developers](https://www.eclipse.org/downloads/packages/release/2019-06/r/eclipse-ide-java-developers)
 
 ## How to import this project into Eclipse (=10)
 
