@@ -282,8 +282,15 @@ public class ValleyBikeSim {
 		return stationWithAvailableDocks;
 	}
 	
+	/**
+	 * Record a ride that a user has currently taken
+	 * Required information such as the start station ID, transportation, destination ID
+	 * Throw out exceptions when the user didn't enter appropriate input
+	 */
 	public static void recordRide() {
 		Scanner input = new Scanner(System.in);
+		
+		//a boolean to determine whether the user input is appropriate or not
 		boolean error = true;
 		int start = 0;
 		Station startStation = new Station(0, null, 0, 0, 0, 0, 0, false, null);
@@ -292,7 +299,8 @@ public class ValleyBikeSim {
 		Station endStation = new Station(0, null, 0, 0, 0, 0, 0, false, null);
 		stationId = stationID();
 		
-		//what's the start station
+		//ask for the start station id
+		//throw out exception if the user didn't enter a non-negative integer or existing station ID
 		while (error) {
 			System.out.println("Which station did you start from (station ID)? ");
 			try {
@@ -317,7 +325,9 @@ public class ValleyBikeSim {
 		
 		startStation = stationsMap.get(start);
 		
-		//what's the transportation
+		//ask for the transportation
+		//throw out exception if the user neither enter 'bike' nor 'pedelec' or 
+		//the user entered a wrong transportation tool
 		error = true;
 		while (error) {
 			System.out.println("Which transportation did you use (bike or pedelec)? ");
@@ -396,7 +406,9 @@ public class ValleyBikeSim {
 			}
 		}
 		
-		//what's the destination
+		//ask for the destination
+		//throw out exception if the user didn't enter a non-negative integer or existing station ID or
+		//the destination has no available docks
 		error = true;
 		while (error) {
 			System.out.println("Where's your destination (station ID)? ");
@@ -422,6 +434,8 @@ public class ValleyBikeSim {
 		
 		endStation = stationsMap.get(end);
 		
+		//when the destination has no available docks, print out stations that are available 
+		//and ask the user to change destination
 		while (endStation.getAvailableDocks() <= 0) {
 			System.out.println("Sorry, there's no available dock for you to return.");
 			System.out.println("\n" + "Here's a list of stations that have available docks: ");
@@ -477,6 +491,9 @@ public class ValleyBikeSim {
 		
 	}
 	
+	/**
+	 * Equalize the station based on the percentages of bike/pedelecs per doc capacity
+	 */
 	public static void equalizeStation() {	
         int totalBikes = 0;
 		for (Station station : stationsList) {
@@ -507,7 +524,8 @@ public class ValleyBikeSim {
 			station.setPedelacs(pedelecs);
 		}
 		
-		//what if after equalizing, the num of bikes isn't the same
+		//what if after equalizing, the current total number of bikes doesn't match the precious total number
+		//we assign the bikes left by the equalization randomly to some other stations
 		int nowTotalBikes = 0;
 		for (Station station : stationsList) {
 			nowTotalBikes += station.getBikes();
@@ -521,7 +539,8 @@ public class ValleyBikeSim {
 			}
 		}
 		
-		//what if the num of pedelecs isn't the same
+		//what if after equalizing, the current total number of pedelecs doesn't match the precious total number
+		//we assign the pedelecs left by the equalization randomly to some other stations
 		int nowTotalPedelecs = 0;
 		for (Station station : stationsList) {
 			nowTotalPedelecs += station.getPedelacs();
